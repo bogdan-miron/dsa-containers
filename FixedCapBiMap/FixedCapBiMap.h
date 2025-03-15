@@ -20,7 +20,7 @@ class FixedCapBiMapIterator;
 //Fixed capacity means that the container has a fixed capacity, provided when it is created. Once the total number of elements is equal to that fixed capacity, no other elements can be added.
 class FixedCapBiMap {
 
-	//DO NOT CHANGE THIS PART
+
 	friend class FixedCapBiMapIterator;
 
 	private:
