@@ -4,13 +4,21 @@
 #include <iostream>
 using namespace std;
 
-
+/*
+O(1)
+theta(1)
+omega(1)
+*/
 Bag::Bag() {
 	head = nullptr;
 	tail = nullptr;
 }
 
-
+/*
+* O(n)
+* theta(n)
+* omega(1)
+*/
 void Bag::add(TElem elem) {
 	Node* current = head;
 	while (current != nullptr) {
@@ -33,7 +41,11 @@ void Bag::add(TElem elem) {
 	}
 }
 
-
+/*
+* O(n)
+* theta(n)
+* omega(1)
+*/
 bool Bag::remove(TElem elem) {
 	Node* current = head;
 	while (current != nullptr) {
@@ -54,7 +66,11 @@ bool Bag::remove(TElem elem) {
 	return false;
 }
 
-
+/*
+* O(n)
+* theta(n)
+* omega(1)
+*/
 bool Bag::search(TElem elem) const {
 	Node* current = head;
 	while (current != nullptr) {
@@ -66,6 +82,12 @@ bool Bag::search(TElem elem) const {
 	return false;
 }
 
+
+/*
+* O(n)
+* theta(n)
+* omega(1)
+*/
 int Bag::nrOccurrences(TElem elem) const {
 	Node* current = head;
 	while (current != nullptr) {
@@ -77,7 +99,11 @@ int Bag::nrOccurrences(TElem elem) const {
 	return 0; 
 }
 
-
+/*
+* O(n)
+* theta(n)
+* omega(n)
+*/
 int Bag::size() const {
 	int ans = 0;
 	Node* current = head;
@@ -89,15 +115,29 @@ int Bag::size() const {
 }
 
 
+/*
+* O(1)
+* theta(1)
+* omega(1)
+*/
 bool Bag::isEmpty() const {
 	return head == nullptr;
 }
 
+/*
+* O(1)
+* theta(1)
+* omega(1)
+*/
 BagIterator Bag::iterator() const {
 	return BagIterator(*this);
 }
 
-
+/*
+* O(n)
+* theta(n)
+* omega(n)
+*/
 Bag::~Bag() {
 	Node* current = head;
 	while (current != nullptr) {
@@ -107,5 +147,28 @@ Bag::~Bag() {
 	}
 	head = nullptr;
 	tail = nullptr;
+}
+
+int Bag::removeAllOccurences(TElem elem) {
+	Node* current = head;
+
+	while (current != nullptr) {
+		if (current->data == elem) {
+			int removedCount = current->frequency;
+
+			// update links
+			if (current->prev) current->prev->next = current->next;
+			else head = current->next;
+
+			if (current->next) current->next->prev = current->prev;
+			else tail = current->prev;
+
+			delete current;
+			return removedCount;
+		}
+		current = current->next;
+	}
+
+	return 0; // elem not found 
 }
 

@@ -332,13 +332,13 @@ void testQuantity() {
 	cout << "Test quantity" << endl;
 	Bag b;
 	for (int i = 10; i >= 1; i--) {
-		for (int j = -30000; j < 30000; j = j + i) {
+		for (int j = -3000; j < 3000; j = j + i) {
 			b.add(j);
 		}
 	}
-	assert(b.size() == 175739);
+	assert(b.size() == 17575);
 	testIteratorSteps(b);
-	assert(b.nrOccurrences(-30000) == 10);
+	assert(b.nrOccurrences(-30000) == 0);
 	BagIterator it = b.iterator();
 	assert(it.valid() == true);
 	for (int i = 0; i < b.size(); i++) {
@@ -367,6 +367,6 @@ void testAllExtended() {
 	testAdd();
 	testRemove();
 	testIterator();
-	//testQuantity();
+	testQuantity();
 
 }

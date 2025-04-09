@@ -20,11 +20,9 @@ class Bag {
 
 private:
 	
-	// representation using a linked list
 	Node* head;
 	Node* tail;
 		
-
 	//DO NOT CHANGE THIS PART
 	friend class BagIterator;
 public:
@@ -55,4 +53,5 @@ public:
 
 	//destructor
 	~Bag();
+	int removeAllOccurences(TElem elem);
 };
